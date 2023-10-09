@@ -3,6 +3,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.vscode
 
 # C extensions
 *.so
@@ -68,6 +69,8 @@ target/
 .venv
 venv/
 ENV/
+.virtualenv
+virtualenv/
 
 # Rope project settings
 .ropeproject

@@ -1,13 +1,16 @@
-# encoding: utf-8
-
-from flask_httpauth import HTTPBasicAuth
-
-from api_service.models import User
-
-auth = HTTPBasicAuth()
+from functools import wraps
+from flask_jwt_extended import get_jwt_identity
+from flask import jsonify
+from api_service.sqlite_util import is_user_available
 
 
-@auth.verify_password
-def verify(username, password):
-    # TODO: Use the data in the database to validate the user credentials.
-    return False
+def authorize_user(fn):
+    @wraps(fn)
+    def decorated_function(*args, **kwargs):
+        current_user = get_jwt_identity()
+        if is_user_available(current_user):
+            return fn(*args, **kwargs)
+        else:
+            return jsonify(message='Unauthorized User'), 401
+
+    return decorated_function
