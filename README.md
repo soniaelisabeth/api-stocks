@@ -4,6 +4,34 @@
 
 # Flask Challenge
 
+## Project's Changes
+
+1. To make things easier, a Postman workspace was used and recommended to authenticate and validate the endpoints.
+2. To work with the process validation, notice that is necessary to execute the API endpoint 'login', once you already have the users on the database.
+3. It's also necessary to get the 'login' endpoint's return and add to the API calls, on Postman, on the Headers of a call:
+Key: Authorization
+Value: Bearer (insert here the api login's return)
+![1](./helper_imgs/1.png)
+
+4. Please notice that the requirements.txt was updated with all the libs and versions I used in this test. I left the versions because I also think it's important on a project, thus the biggest change was the Flask JWT lib.
+5. My biggest challenge was the connection with SQLAlchemy, which I could not make it work due to an error that keep occurring with the key SQLALCHEMY_DATABASE_URI. I believe this was my only failure on this project, but I could make everything work with the simple lib sqlite3. Also, please remember to change the MAIN_DB_PATH sql_util file, to the full path if needed.
+
+## Considerations
+
+The project was a challenge that I really enjoyed doing I made the hard decision to work with something I was already fammiliar with when dealing with the databases processes, also because of the due date. I believe choices like this are supposed to be made on a programmer's daily basis, always paying attention on the due date outcome and making the decision on what to spend your time on.
+If more time is provided I would love to implement more of the extras requirements and studying more about the SqlAlchemy issue.
+
+Thank you for the opportunity!
+
+## Changes I Would Like to Make
+
+- Add a Swagger file for the API
+- Add tests
+- Working better with the Schema classes
+- Working with SqlAlchemy
+- Making functions more readble
+
+
 ## Description
 This project is designed to test your knowledge of back-end web technologies, specifically in the Flask framework, Rest APIs, and decoupled services (microservices).
 
@@ -83,28 +111,3 @@ The following features are optional to implement, but if you do, you'll be ranke
 __Important:__ If your implementation requires different steps to start the services
 (like starting a rabbitMQ consumer), document them here!
 
-
-## CHANGES IN THE PROJECT
-1. To make things easier, a Postman workspace was used and recommended to authenticate and validate the endpoints.
-2. To work with the process validation, notice that is necessary to execute the API endpoint 'login', once you already have the users on the database.
-3. It's also necessary to get the 'login' endpoint's return and add to the API calls, on Postman, on the Headers of a call:
-Key: Authorization
-Value: Bearer (insert here the api login's return)
-![1](./helper_imgs/1.png)
-
-4. Please notice that the requirements.txt was updated with all the libs and versions I used in this test. I left the versions because I also think it's important on a project, thus the biggest change was the Flask JWT lib.
-5. My biggest challenge was the connection with SQLAlchemy, which I could not make it work due to an error that keep occurring with the key SQLALCHEMY_DATABASE_URI. I believe this was my only failure on this project, but I could make everything work with the simple lib sqlite3. Also, please remember to change the MAIN_DB_PATH sql_util file, to the full path if needed.
-
-## CONSIDERATIONS
-
-The project was a challenge that I really enjoyed doing I made the hard decision to work with something I was already fammiliar with when dealing with the databases processes, also because of the due date. I believe choices like this are supposed to be made on a programmer's daily basis, always paying attention on the due date outcome and making the decision on what to spend your time on.
-If more time is provided I would love to implement more of the extras requirements and studying more about the SqlAlchemy issue.
-
-Thank you for the opportunity!
-
-## CHANGES I WOULD LIKE TO MAKE
-- Add a Swagger file for the API
-- Add tests
-- Working better with the Schema classes
-- Working with SqlAlchemy
-- Making functions more readble
