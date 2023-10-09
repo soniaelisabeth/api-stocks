@@ -2,11 +2,11 @@ import sqlite3
 
 MAIN_DB_PATH = "api_service/api_service.sqlite3"
 
-def execute_query(query, values):
+def execute_query(values):
     try:
         db_connection = sqlite3.connect(MAIN_DB_PATH, timeout=15)
         cursor = db_connection.cursor()
-        cursor.execute(query, values)
+        cursor.execute(INSERT_STOCKS_QUERY, values)
         db_connection.commit()
     except Exception as e:
         return e.args
@@ -47,3 +47,4 @@ def is_user_available(user, password):
 
 FETCH_ALL_STOCKS_QUERY = "SELECT * FROM stocks"
 FETCH_USER_QUERY = 'SELECT COUNT(*) FROM user WHERE username = ? AND password = ?'
+INSERT_STOCKS_QUERY = 'INSERT OR REPLACE INTO stocks (name, data) VALUES (?,?)'

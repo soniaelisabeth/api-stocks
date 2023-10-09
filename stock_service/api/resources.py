@@ -49,11 +49,10 @@ class StockResource(Resource):
         return stock_data_formatted
     
     def save_to_database(self, stock_data):
-        query = 'INSERT OR REPLACE INTO stocks (name, data) VALUES (?,?)'
         name = stock_data.get('name', 'UnamedStock')
         stock_data = self.update_stock_requests_data(stock_data, name)
         values = (name, json.dumps(stock_data))
-        return execute_query(query, values)
+        return execute_query(values)
 
     def format_request_return_information(self, stock_data):
         return {
