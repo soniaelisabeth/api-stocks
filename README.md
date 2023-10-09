@@ -103,6 +103,7 @@ If more time is provided I would love to implement more of the extras requiremen
 Thank you for the opportunity!
 
 ## CHANGES I WOULD LIKE TO MAKE
+- Add a Swagger file for the API
 - Add tests
 - Working better with the Schema classes
 - Working with SqlAlchemy
