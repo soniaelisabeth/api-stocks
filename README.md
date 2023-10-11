@@ -16,6 +16,11 @@ Value: Bearer (insert here the api login's return)
 4. Please notice that the requirements.txt was updated with all the libs and versions I used in this test. I left the versions because I also think it's important on a project, thus the biggest change was the Flask JWT lib.
 5. My biggest challenge was the connection with SQLAlchemy, which I could not make it work due to an error that keep occurring with the key SQLALCHEMY_DATABASE_URI. I believe this was my only failure on this project, but I could make everything work with the simple lib sqlite3. Also, please remember to change the MAIN_DB_PATH sql_util file, to the full path if needed.
 
+## Populate the databases
+- The User (and the Stocks) tables are going to be CREATED in the api_service database when running flask db migrate; flask db upgrade
+- The User database is going to be POPULATED when navigating to the api_service folder, in the CMD running "python manager.py init". This adds the default allowed users to the User table.
+- The Stocks database is going to be POPULATED only when the "/stock" endpoint is called.
+
 ## Considerations
 
 The project was a challenge that I really enjoyed doing I made the hard decision to work with something I was already fammiliar with when dealing with the databases processes, also because of the due date. I believe choices like this are supposed to be made on a programmer's daily basis, always paying attention on the due date outcome and making the decision on what to spend your time on.
