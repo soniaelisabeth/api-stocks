@@ -18,6 +18,7 @@ Value: Bearer (insert here the api login's return)
 
 ## Populate the databases
 - The User (and the Stocks) tables are going to be CREATED in the api_service database when running flask db migrate; flask db upgrade
+- Please make sure that the program used the migrations/versions' python file to create the tables.
 - The User database is going to be POPULATED when navigating to the api_service folder, in the CMD running "python manager.py init". This adds the default allowed users to the User table.
 - The Stocks database is going to be POPULATED only when the "/stock" endpoint is called.
 
