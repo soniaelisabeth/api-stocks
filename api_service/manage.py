@@ -1,29 +1,31 @@
 # encoding: utf-8
 
+import sqlite3
 import click
-from flask.cli import with_appcontext
 
+MAIN_DB_PATH = "./api_service.sqlite3"
 
 @click.group()
 def cli():
-    """Main entry point"""
     pass
 
-
 @cli.command("init")
-@with_appcontext
 def init():
-    """Create a new admin user"""
-    from api_service.extensions import db
-    from api_service.models import User
+    click.echo("Creating admin user")
 
-    click.echo("create admin user")
-    user = User(username="admin", email="admin@mail.com", password="admin", active=True, role='ADMIN')
-    db.session.add(user)
-    user = User(username="johndoe", email="johndoe@mail.com", password="john", active=True, role='USER')
-    db.session.commit()
-    click.echo("created users.")
+    conn = sqlite3.connect(MAIN_DB_PATH)
+    cursor = conn.cursor()
 
+    admin_user = ("admin", "admin@mail.com", "admin", True, "ADMIN")
+    john_doe_user = ("johndoe", "johndoe@mail.com", "john", True, "USER")
+
+    cursor.execute("INSERT INTO user (username, email, password, active, role) VALUES (?, ?, ?, ?, ?)", admin_user)
+    cursor.execute("INSERT INTO user (username, email, password, active, role) VALUES (?, ?, ?, ?, ?)", john_doe_user)
+
+    conn.commit()
+    conn.close()
+
+    click.echo("Created users.")
 
 if __name__ == "__main__":
     cli()
